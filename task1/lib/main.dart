@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+
 //主函数（入口函数），下面我会简单说说Dart的函数
+// import 'dart:async';
+// import 'package:flute_music_player/flute_music_player.dart';
+
 void main() =>runApp(MyApp());
 // 声明MyApp类
 class MyApp extends StatelessWidget{
@@ -159,53 +163,103 @@ class MyApp extends StatelessWidget{
           // child: MyList(),
 
           /* grid 组件 */
-          child: GridView(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              mainAxisSpacing: 2.0,
-              crossAxisSpacing: 2.0,
-              childAspectRatio: 0.7
-            ),
-            children: <Widget>[
-             new Image.network('http://img5.mtime.cn/mt/2018/10/22/104316.77318635_180X260X4.jpg',fit: BoxFit.cover),
-             new Image.network('http://img5.mtime.cn/mt/2018/10/10/112514.30587089_180X260X4.jpg',fit: BoxFit.cover),
-             new Image.network('http://img5.mtime.cn/mt/2018/11/13/093605.61422332_180X260X4.jpg',fit: BoxFit.cover),
-             new Image.network('http://img5.mtime.cn/mt/2018/11/07/092515.55805319_180X260X4.jpg',fit: BoxFit.cover),
-             new Image.network('http://img5.mtime.cn/mt/2018/11/21/090246.16772408_135X190X4.jpg',fit: BoxFit.cover),
-             new Image.network('http://img5.mtime.cn/mt/2018/11/17/162028.94879602_135X190X4.jpg',fit: BoxFit.cover),
-             new Image.network('http://img5.mtime.cn/mt/2018/11/19/165350.52237320_135X190X4.jpg',fit: BoxFit.cover),
-             new Image.network('http://img5.mtime.cn/mt/2018/11/16/115256.24365160_180X260X4.jpg',fit: BoxFit.cover),
-             new Image.network('http://img5.mtime.cn/mt/2018/11/20/141608.71613590_135X190X4.jpg',fit: BoxFit.cover),
+          // child: GridView(
+          //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          //     crossAxisCount: 3,
+          //     mainAxisSpacing: 2.0,
+          //     crossAxisSpacing: 2.0,
+          //     childAspectRatio: 0.7
+          //   ),
+          //   children: <Widget>[
+          //    new Image.network('http://img5.mtime.cn/mt/2018/10/22/104316.77318635_180X260X4.jpg',fit: BoxFit.cover),
+          //    new Image.network('http://img5.mtime.cn/mt/2018/10/10/112514.30587089_180X260X4.jpg',fit: BoxFit.cover),
+          //    new Image.network('http://img5.mtime.cn/mt/2018/11/13/093605.61422332_180X260X4.jpg',fit: BoxFit.cover),
+          //    new Image.network('http://img5.mtime.cn/mt/2018/11/07/092515.55805319_180X260X4.jpg',fit: BoxFit.cover),
+          //    new Image.network('http://img5.mtime.cn/mt/2018/11/21/090246.16772408_135X190X4.jpg',fit: BoxFit.cover),
+          //    new Image.network('http://img5.mtime.cn/mt/2018/11/17/162028.94879602_135X190X4.jpg',fit: BoxFit.cover),
+          //    new Image.network('http://img5.mtime.cn/mt/2018/11/19/165350.52237320_135X190X4.jpg',fit: BoxFit.cover),
+          //    new Image.network('http://img5.mtime.cn/mt/2018/11/16/115256.24365160_180X260X4.jpg',fit: BoxFit.cover),
+          //    new Image.network('http://img5.mtime.cn/mt/2018/11/20/141608.71613590_135X190X4.jpg',fit: BoxFit.cover),
            
-            ],
-          ),
+          //   ],
+          // ),
+          
+          child: ButtomN()
         ),
       ),
     );
   }
 }
 
-/* 提取组件 */
-// class MyList extends StatelessWidget{
-//   @override
-//   Widget build(BuildContext context){
-//     return ListView(
-//         scrollDirection: Axis.horizontal,
-//         children: <Widget>[
-//           new Container(
-//             width:180.0,
-//             color: Colors.lightBlue,
-//           ), new Container(
-//             width:180.0,
-//             color: Colors.amber,
-//           ), new Container(
-//             width:180.0,
-//             color: Colors.deepOrange,
-//           ),new Container(
-//             width:180.0,
-//             color: Colors.deepPurpleAccent,
-//           ),
-//         ],
-//     );
-//   }
-// }
+/* 底部导航 */
+
+class ButtomN extends StatelessWidget {
+  @override 
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: '底部导航',
+      theme: ThemeData.light(),
+      home: BottomNavigationWidget()
+    );
+  }
+}
+
+class BottomNavigationWidget extends StatefulWidget {
+  @override
+  _BottomNavigationWidgetState createState() => _BottomNavigationWidgetState();
+}
+
+class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
+  final _BottomNavigationColor = Colors.blue;
+  
+  @override
+  Widget build(BuildContext context) {
+     return Scaffold(
+       bottomNavigationBar: BottomNavigationBar(
+         items: [
+           BottomNavigationBarItem(
+             icon:Icon(
+               Icons.home,
+               color:_BottomNavigationColor,
+             ),
+             title:Text(
+               'Home',
+               style:TextStyle(color:_BottomNavigationColor)
+             )
+           ),
+           BottomNavigationBarItem(
+             icon:Icon(
+               Icons.email,
+               color:_BottomNavigationColor,
+             ),
+             title:Text(
+               'Email',
+               style:TextStyle(color:_BottomNavigationColor)
+             )
+           ),
+           BottomNavigationBarItem(
+             icon:Icon(
+               Icons.pages,
+               color:_BottomNavigationColor,
+             ),
+             title:Text(
+               'Pages',
+               style:TextStyle(color:_BottomNavigationColor)
+             )
+           ),
+           BottomNavigationBarItem(
+             icon:Icon(
+               Icons.airplay,
+               color:_BottomNavigationColor,
+             ),
+             title:Text(
+               'AipPlay',
+               style:TextStyle(color:_BottomNavigationColor)
+             )
+           ),
+         ],
+         type:BottomNavigationBarType.fixed
+       ),
+     );
+  }
+}
