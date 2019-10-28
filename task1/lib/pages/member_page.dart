@@ -5,10 +5,10 @@ class MemberPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-        title: Text('MemberPage'),
+        title: Text('会员中心'),
       ),
       body:Center(
-        child: Text('MemberPage'),
+        child: Text('会员中心'),
       )
     );
   }

@@ -5,10 +5,10 @@ class CategoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-        title: Text('CategoryPage'),
+        title: Text('分类'),
       ),
       body:Center(
-        child: Text('CategoryPage'),
+        child: Text('分类'),
       )
     );
   }

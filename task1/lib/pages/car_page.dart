@@ -5,10 +5,10 @@ class CarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-        title: Text('CarPage'),
+        title: Text('购物车'),
       ),
       body:Center(
-        child: Text('CarPage'),
+        child: Text('购物车'),
       )
     );
   }
