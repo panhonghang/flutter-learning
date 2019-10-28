@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class MemberPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-        title: Text('HOME'),
+        title: Text('MemberPage'),
       ),
       body:Center(
-        child: Text('HOME'),
+        child: Text('MemberPage'),
       )
     );
   }
