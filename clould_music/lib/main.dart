@@ -1,28 +1,17 @@
 import 'package:flutter/material.dart';
+import 'pages/index_page.dart';
 
-void main() => runApp(MyApp());
+void main()=>runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter 网易云音乐练习',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor:Colors.white
       ),
-      home: MyHomePage(),
+      home:IndexPage()
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
   }
 }
