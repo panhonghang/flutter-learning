@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatefulWidget {
+  final String url;
+  MyDrawer({Key key,this.url}):super(key:key);
   @override
   _MyDrawerState createState() => _MyDrawerState();
 }
@@ -8,6 +10,8 @@ class MyDrawer extends StatefulWidget {
 class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
+    print(widget.url);
+    print('aaaaaa');
     return Container(
       child: Drawer(
               child: ListView(
@@ -18,7 +22,7 @@ class _MyDrawerState extends State<MyDrawer> {
                     height: 200,
                     child: Container(
                       color: Colors.grey[300],
-                      child: Image.network(url),
+                      child: Image.network(widget.url),
                     )
                   ),
                   ListTile(

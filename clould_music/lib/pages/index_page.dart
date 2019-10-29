@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 import '../widgets/drawer.dart';
 import '../service/service_method.dart';
 
-class IndexPage extends StatelessWidget {
+class IndexPage extends StatefulWidget {
+  @override
+  _IndexPageState createState() => _IndexPageState();
+}
+
+class _IndexPageState extends State<IndexPage> {
+  String url = 'http://p1.music.126.net/_f8R60U9mZ42sSNvdPn2sQ==/109951162868126486.jpg';
   @override
   Widget build(BuildContext context) {
-    String url = 'a';
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        drawer: MyDrawer(),
+        drawer: MyDrawer(url:url),
         appBar: AppBar(
             backgroundColor: Colors.red,
             titleSpacing: 0.0,
@@ -20,7 +25,11 @@ class IndexPage extends StatelessWidget {
                         icon: Icon(Icons.menu,color: Colors.white,),
                         onPressed: (){
                           getHomePageContent().then((res){
-                            print('aaaaa$res');
+                            var a = res['profile'];
+                            print('aaaaa$a');
+                            // setState(() {
+                            //  url = a; 
+                            // });
                           });
                           Scaffold.of(context).openDrawer();
                         }
@@ -46,7 +55,9 @@ class IndexPage extends StatelessWidget {
             actions: <Widget>[
               IconButton(
                 icon: Icon(Icons.search,color: Colors.white,),
-                onPressed: (){},
+                onPressed: (){
+
+                },
               )
             ],
         ),
