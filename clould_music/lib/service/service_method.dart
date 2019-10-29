@@ -10,11 +10,12 @@ Future getHomePageContent() async{
     Response response;
     Dio dio = new Dio();
     
-    dio.options.contentType = ContentType.parse('application/x-www-form-urlencoded') as String;
+    dio.options.contentType = ContentType.parse('application/x-www-form-urlencoded');
 
-    var formData = {'lon':'115.02932','lat':'35.76189'};
+    // var formData = {'lon':'115.02932','lat':'35.76189'};
 
-    response = await dio.post(servicePath['homePageContext'],data:formData);
+    // response = await dio.get(servicePath['homePageContext']);
+    response = await dio.get(servicePath['userdetial']);
 
     if(response.statusCode==200){
       return response.data;

@@ -1,4 +1,5 @@
-const serviceUrl= 'xxxxxx';//此端口针对于正版用户开放，可自行fiddle获取。
+const serviceUrl= 'http://47.100.167.231:4000/';//此端口针对于正版用户开放，可自行fiddle获取。
 const servicePath={
-  'homePageContext': serviceUrl+'wxmini/homePageContent', // 商家首页信息
+  'login': serviceUrl+'login/cellphone?phone=13617698467&password=9872014', // 登陆接口
+  'userdetial': serviceUrl+'user/detail?uid=533788348'
 };
