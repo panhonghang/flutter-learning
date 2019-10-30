@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
 import '../widgets/drawer.dart';
 import '../service/service_method.dart';
+import 'my_page.dart';
 
 class IndexPage extends StatefulWidget {
   @override
   _IndexPageState createState() => _IndexPageState();
 }
-
+ 
 class _IndexPageState extends State<IndexPage> {
-  String url = 'http://p1.music.126.net/_f8R60U9mZ42sSNvdPn2sQ==/109951162868126486.jpg';
+  
+  String url;
+  String name;
+  int level;
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        drawer: MyDrawer(url:url),
+        drawer: MyDrawer(url:url,name: name,level: level,),
         appBar: AppBar(
             backgroundColor: Colors.red,
             titleSpacing: 0.0,
@@ -25,11 +30,12 @@ class _IndexPageState extends State<IndexPage> {
                         icon: Icon(Icons.menu,color: Colors.white,),
                         onPressed: (){
                           getHomePageContent().then((res){
-                            var a = res['profile'];
-                            print('aaaaa$a');
-                            // setState(() {
-                            //  url = a; 
-                            // });
+                            print(res['level']);
+                            setState(() {
+                             url = res['profile']['avatarUrl']; 
+                             name = res['profile']['nickname'];
+                             level = res['level'];
+                            });
                           });
                           Scaffold.of(context).openDrawer();
                         }
@@ -63,7 +69,7 @@ class _IndexPageState extends State<IndexPage> {
         ),
         body: TabBarView(
           children: [
-            Icon(Icons.directions_car),
+            MyPage(),
             Icon(Icons.directions_transit),
             Icon(Icons.ac_unit),
             Icon(Icons.directions_bike),
