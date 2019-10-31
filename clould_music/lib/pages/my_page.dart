@@ -29,6 +29,7 @@ class _MyPageState extends State<MyPage>{
       song_list.add(
         ListTile(
           leading: Container(
+            // 图片圆角
             decoration: ShapeDecoration(
                 image: DecorationImage(
                   image: NetworkImage(key['coverImgUrl']),
@@ -119,7 +120,7 @@ class _MyPageState extends State<MyPage>{
                               borderRadius: BorderRadius.all(Radius.circular(60)),
                             ),
                           ),
-                          Text('私人FM',textScaleFactor: .8,style: TextStyle(color: Colors.grey[500]),)
+                          Text('最嗨电音',textScaleFactor: .8,style: TextStyle(color: Colors.grey[500]),)
                         ],
                       ),
                     ),
@@ -142,7 +143,7 @@ class _MyPageState extends State<MyPage>{
                               borderRadius: BorderRadius.all(Radius.circular(60)),
                             ),
                           ),
-                          Text('私人FM',textScaleFactor: .8,style: TextStyle(color: Colors.grey[500]),)
+                          Text('AVG专区',textScaleFactor: .8,style: TextStyle(color: Colors.grey[500]),)
                         ],
                       ),
                     ),
@@ -165,7 +166,7 @@ class _MyPageState extends State<MyPage>{
                               borderRadius: BorderRadius.all(Radius.circular(60)),
                             ),
                           ),
-                          Text('私人FM',textScaleFactor: .8,style: TextStyle(color: Colors.grey[500]),)
+                          Text('Satl空间',textScaleFactor: .8,style: TextStyle(color: Colors.grey[500]),)
                         ],
                       ),
                     ),
@@ -188,7 +189,7 @@ class _MyPageState extends State<MyPage>{
                               borderRadius: BorderRadius.all(Radius.circular(60)),
                             ),
                           ),
-                          Text('私人FM',textScaleFactor: .8,style: TextStyle(color: Colors.grey[500]),)
+                          Text('私藏推荐',textScaleFactor: .8,style: TextStyle(color: Colors.grey[500]),)
                         ],
                       ),
                     ),
@@ -211,7 +212,7 @@ class _MyPageState extends State<MyPage>{
                               borderRadius: BorderRadius.all(Radius.circular(60)),
                             ),
                           ),
-                          Text('私人FM',textScaleFactor: .8,style: TextStyle(color: Colors.grey[500]),)
+                          Text('音乐交友',textScaleFactor: .8,style: TextStyle(color: Colors.grey[500]),)
                         ],
                       ),
                     ),

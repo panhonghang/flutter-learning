@@ -3,4 +3,6 @@ const servicePath={
   'login': serviceUrl+'login/cellphone?phone=13617698467&password=9872014', // 登陆接口
   'userdetial': serviceUrl+'user/detail?uid=533788348',//用户信息接口
   'playlist': serviceUrl+'user/playlist?uid=533788348',//歌单接口
+  'songurl': serviceUrl+'song/url?id=',//音乐url
+  'artists': serviceUrl+'artists?id=6452',//歌手单曲
 };
