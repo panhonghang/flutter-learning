@@ -6,16 +6,47 @@ class MyPage extends StatefulWidget {
   _MyPageState createState() => _MyPageState();
 }
 
-class _MyPageState extends State<MyPage> {
+class _MyPageState extends State<MyPage>{
+  List formlist = [];
+
   @override
-  Widget build(BuildContext context) {
-    // getPlayList().then((key){
-    //   print(key);
-    // });
-    return Container(
-       child: Column(
-         children: <Widget>[
-           Container(
+  initState(){
+    super.initState();
+  }
+
+  Widget build(BuildContext context) { 
+
+    List<Widget> song_list = [];
+    if(formlist.length < 1){
+       getPlayList().then((key){
+        setState(() {
+        formlist = key['playlist'];        
+        });
+      });
+    }
+  // 遍历添加
+    for(var key in formlist){
+      song_list.add(
+        ListTile(
+          leading: Container(
+            decoration: ShapeDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(key['coverImgUrl']),
+                  fit: BoxFit.fitWidth),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(8))),
+            width: 50,
+            height: 50,
+          ),
+          title: Text(key['name']),
+          subtitle: Text('${key['trackCount']}首',textScaleFactor: .9,),
+        )
+      );
+    }   
+
+    return ListView(
+      children: <Widget>[
+        Container(
              height: 100,
              decoration: BoxDecoration(
                border: Border(bottom: BorderSide(width: .5,color: Colors.grey[700]))
@@ -188,8 +219,75 @@ class _MyPageState extends State<MyPage> {
                 ],
               )
            ),
-         ],
-       ),
+        Container(
+             height: 300,
+             child: ListView(
+               padding: EdgeInsets.only(left: 6,top: 10,bottom: 10),
+               children: <Widget>[
+                 ListTile(
+                   leading: Icon(Icons.music_video),
+                   title: Container(
+                     height: 30,
+                     margin: EdgeInsets.only(top: 8),
+                     child: Text('本地音乐'),
+                     decoration: BoxDecoration(
+                       border: Border(bottom: BorderSide(width: .3))
+                     ),
+                   )
+                 ),
+                 ListTile(
+                   leading: Icon(Icons.play_arrow),
+                   title: Container(
+                     height: 30,
+                     margin: EdgeInsets.only(top: 8),
+                     child: Text('最近播放'),
+                     decoration: BoxDecoration(
+                       border: Border(bottom: BorderSide(width: .3))
+                     ),
+                   )
+                 ),
+                 ListTile(
+                   leading: Icon(Icons.cloud_download),
+                   title: Container(
+                     height: 30,
+                     margin: EdgeInsets.only(top: 8),
+                     child: Text('下载管理'),
+                     decoration: BoxDecoration(
+                       border: Border(bottom: BorderSide(width: .3))
+                     ),
+                   )
+                 ),
+                 ListTile(
+                   leading: Icon(Icons.video_library),
+                   title: Container(
+                     height: 30,
+                     margin: EdgeInsets.only(top: 8),
+                     child: Text('我的电台'),
+                     decoration: BoxDecoration(
+                       border: Border(bottom: BorderSide(width: .3))
+                     ),
+                   )
+                 ),
+                 ListTile(
+                   leading: Icon(Icons.save),
+                   title: Container(
+                     height: 30,
+                     margin: EdgeInsets.only(top: 8),
+                     child: Text('我的收藏'),
+                     decoration: BoxDecoration(
+                       border: Border(bottom: BorderSide(width: .3))
+                     ),
+                   )
+                 ),
+               ],
+             )
+           ),
+        Container(
+          child: Column(
+            children: song_list
+          )
+        )
+      ],
     );
   }
 }
