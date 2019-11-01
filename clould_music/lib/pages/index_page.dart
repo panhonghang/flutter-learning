@@ -1,3 +1,4 @@
+import 'package:cloud_music/pages/play_page.dart';
 import 'package:flutter/material.dart';
 import '../widgets/drawer.dart';
 import '../service/service_method.dart';
@@ -63,63 +64,68 @@ class _IndexPageState extends State<IndexPage> {
             width: 100,
             height: 60,
             color: Colors.white,
-            padding: EdgeInsets.only(left: 20,right: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Container(
-                  width: 200,
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        width: 40,
-                        height: 40,
-                        margin: EdgeInsets.only(right: 20),
-                        child: CircleAvatar(
-                          backgroundImage: NetworkImage(songList[0]['al']['picUrl']),
-                          radius: 10.0,
+            child: RaisedButton(
+              color: Colors.white,
+              onPressed: () {
+                Navigator.push(context,MaterialPageRoute(builder: (context) => PlayPage()));
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    width: 200,
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          width: 40,
+                          height: 40,
+                          margin: EdgeInsets.only(right: 20),
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage(songList[0]['al']['picUrl']),
+                            radius: 10.0,
+                          ),
                         ),
-                      ),
-                      Container(
-                        height: 60,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                          Text(songList[0]['name']),
-                          Text(songList[0]['ar'][0]['name'],textScaleFactor: .8,),
-                        ],),
-                      ),
-                    ],
+                        Container(
+                          height: 60,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                            Text(songList[0]['name']),
+                            Text(songList[0]['ar'][0]['name'],textScaleFactor: .8,),
+                          ],),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Container(
-                  width: 80,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                     IconButton(
-                       icon: Icon(Icons.music_video),
-                       onPressed: (){
-                         if(flag){
-                           flag = !flag;
-                           getSongUrl(210049).then((res){
-                            //  因为http 安卓8以上不支持
-                            print(res['data'][0]['url'].substring(4));
-                            play('https${res['data'][0]['url'].substring(4)}');
-                          });
-                         } else {
-                           flag = !flag;
-                           pause();
-                         }
-                       },
-                     ),
-                      Icon(Icons.menu)
-                    ],
+                  Container(
+                    width: 80,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.music_video),
+                        onPressed: (){
+                          if(flag){
+                            flag = !flag;
+                            getSongUrl(210049).then((res){
+                              //  因为http 安卓8以上不支持
+                              print(res['data'][0]['url'].substring(4));
+                              play('https${res['data'][0]['url'].substring(4)}');
+                            });
+                          } else {
+                            flag = !flag;
+                            pause();
+                          }
+                        },
+                      ),
+                        Icon(Icons.menu)
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            )    
+                ],
+              )    
+            ),
           )
         ),
         appBar: AppBar(
@@ -181,60 +187,3 @@ class _IndexPageState extends State<IndexPage> {
     );
   }
 }
-
-// import 'package:audioplayers/audioplayers.dart';
-// import 'package:flutter/material.dart';
-
-// class IndexPage extends StatefulWidget {
-//   @override
-//   _IndexPageState createState() => _IndexPageState();
-// }
-
-// class _IndexPageState extends State<IndexPage> {
-//   @override
-//   void initState() {
-//     super.initState();
-//   }
-//     AudioPlayer audioPlayer = AudioPlayer();
-//    play() async {
-//       int result = await audioPlayer.play('https://m7.music.126.net/20191031185532/f8316b662336ad97915df938c7f98fae/ymusic/fa6d/eec5/0a4d/508daa7382cbff346af10e353c871c62.mp3');
-//       if (result == 1) {
-//         // success
-//         print('play success');
-//       } else {
-//         print('play failed');
-//       }
-//     }
-
-//   pause() async {
-//       int result = await audioPlayer.pause();
-//       if (result == 1) {
-//         // success
-//         print('pause success');
-//       } else {
-//         print('pause failed');
-//       }
-//     }
-    
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       child: Row(
-//         children: <Widget>[
-//           RaisedButton(
-//             child: Text("播放"),
-//               onPressed: () {
-//                 play();
-//               },
-//           ),
-//           RaisedButton(
-//             child: Text('暂停'),
-//               onPressed: () {
-//                 pause();
-//               },
-//           ),
-//         ],
-//       )
-//     );
-//   }
-// }
